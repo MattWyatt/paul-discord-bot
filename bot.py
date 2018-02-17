@@ -28,8 +28,7 @@ async def on_message(message):
         else:
             message.channel.send("sorry, but that is not a command.")
     elif message.content.startswith(cfg["markov_prefix"]+" "):
-        response = markov.construct_response(parser.parse_markov(message.content))
-        print(response)
+        response = await markov.construct_response(parser.parse_markov(message.content))
         await client.send_message(message.channel, response)
 
 

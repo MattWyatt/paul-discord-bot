@@ -31,7 +31,7 @@ def insert(words):
     connection.close()
 
 
-def construct_response(words):
+async def construct_response(words):
     connection = sqlite3.connect("markov.db")
     c = connection.cursor()
     index = randint(0, len(words)-1)
