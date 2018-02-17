@@ -25,7 +25,6 @@ def insert(words):
             value = words[iterator+1]
             c.execute("INSERT INTO markov VALUES (?, ?)", (key, value))
         except IndexError:
-            print("reached end of sentence")
             continue
     connection.commit()
     c.execute("SELECT * FROM markov")
@@ -41,17 +40,13 @@ def construct_response(words):
     final = ""
     while count < 21:
         count += 1
-        print("current value: " + current)
         c.execute("SELECT value FROM markov WHERE key=?", (current,))
         possible = c.fetchall()
         if len(possible) == 0:
-            print(final)
             return final
-        print("possible: " + str(possible))
         current = possible[randint(0, len(possible)-1)][0]
         final += current + " "
     connection.close()
-    print(final)
     return final
 
 

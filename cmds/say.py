@@ -9,4 +9,4 @@ description = "repeats after you"
 
 @handler.command("say", description)
 async def say(bot, msg, args):
-    await bot.send_message(msg.channel, str(args))
+    await bot.send_message(msg.channel, args.join(" "))
