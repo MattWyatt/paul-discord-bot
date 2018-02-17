@@ -1,0 +1,3 @@
+#!/bin/bash
+python3 bot.py &
+echo starting bot...

@@ -6,7 +6,7 @@ paul is outfitted some very basic utility commands as well as some fun commands.
 
 ## hosting
 if you'd like to host paul yourself, it's pretty easy.
-1. clone the repository into wherever you'd like to run him from. `git clone https://github.com/MattWyatt/paul-discord-bot.git`
+1. clone the repository into wherever you'd like to run him from. `git clone https://github.com/MattWyatt/paul-discord-bot.git && cd paul-discord-bot`
 2. install `requests` and `discord.py`. `python3 -m pip install requests discord.py`
 3. rename `emptyconfig.json` to `config.json` and insert your information into the newly renamed file
-4. run the bot! `python3 bot.py`
+4. run the bot! `chmod +x start.sh && ./start.sh`
