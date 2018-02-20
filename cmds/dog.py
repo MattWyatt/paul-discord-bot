@@ -16,11 +16,14 @@ async def dog(bot, msg, args):
     if not request.status_code == 200:
         await bot.send_message(msg.channel, "the site failed to retrieve a random dog.")
         return
+    embed = None
     if ".mp4" in request.text:
-        await bot.send_message(msg.channel, "https://random.dog/" + request.text)
-        await bot.send_message(msg.channel, "`retrieved from https://random.dog`")
+        embed = discord.Embed(video=request.text, type="rich")
+        embed.set_footer(text="retrieved from https://random.dog", icon_url="https://i.imgur.com/riA2zNy.jpg")
+        embed.set_image(url="https://random.dog/" + request.text)
         return
-    embed = discord.Embed(type="rich")
-    embed.set_footer(text="retrieved from https://random.dog", icon_url="https://i.imgur.com/riA2zNy.jpg")
-    embed.set_image(url="https://random.dog/" + request.text)
+    else:
+        embed = discord.Embed(type="rich")
+        embed.set_footer(text="retrieved from https://random.dog", icon_url="https://i.imgur.com/riA2zNy.jpg")
+        embed.set_image(url="https://random.dog/" + request.text)
     await bot.send_message(msg.channel, embed=embed)
