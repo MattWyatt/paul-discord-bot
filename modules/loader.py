@@ -1,5 +1,8 @@
+"""
+controls the loading of all files in the cmds directory
+"""
+
 import os
-import glob
 import importlib
 
 
@@ -8,10 +11,9 @@ def load():
     filtered = []
     for name in cmdnames:
         if name[-3:] == ".py":
-            print("added", name)
+            print("loaded command [{}]".format(name[:-3]))
             filtered.append(name)
     for name in filtered:
-        print(filtered)
         m = importlib.import_module("cmds." + name[:-3])
         importlib.reload(m)
 

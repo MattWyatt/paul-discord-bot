@@ -15,7 +15,8 @@ description = "lists all commands and their functions"
 
 @handler.command(Command(name, group, description))
 async def list_help(bot, msg, args):
-    string = ""
+    string = "```"
     for key in handler.help:
-        string += ("\n`" + cfg["prefix"] + key + " - " + handler.help[key] + "`")
+        string += ("\n\n" + cfg["prefix"] + key + " - " + handler.help[key] + "")
+    string += "```"
     await bot.send_message(msg.channel, string)
