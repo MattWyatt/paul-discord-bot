@@ -25,8 +25,10 @@ class Handler:
         else:
             print("no command found")
 
-    def command(self, cmdname, desc):
+    def command(self, command_object):
         def registrar(func):
+            cmdname = command_object.name
+            desc = command_object.description
             self.commands[cmdname] = func
             self.help[cmdname] = desc
         return registrar

@@ -5,10 +5,13 @@ this master is responsible for listening for client events and running commands.
 
 from modules import parser
 from modules import markov
+from modules import loader
 from master import cfg
 from master import client
 from master import handler
-from cmds import *
+
+# initially import commands
+loader.load()
 
 
 @client.event

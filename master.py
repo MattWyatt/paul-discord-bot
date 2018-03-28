@@ -5,7 +5,7 @@ it includes references to the global client instance, the global handler instanc
 
 import discord
 from modules import config
-from modules.handler import Handler
+from modules.Handler import Handler
 cfg = config.get()
 client = discord.Client()
 handler = Handler(client)

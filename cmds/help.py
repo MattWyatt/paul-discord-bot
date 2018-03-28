@@ -3,12 +3,17 @@ lists all the commands with the prefix as well as their descriptions.
 """
 
 
+from modules.Command import Command
 from master import handler
 from master import cfg
+
+
+name = "help"
+group = "standard"
 description = "lists all commands and their functions"
 
 
-@handler.command("help", description)
+@handler.command(Command(name, group, description))
 async def list_help(bot, msg, args):
     string = ""
     for key in handler.help:

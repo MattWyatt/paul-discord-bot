@@ -6,11 +6,16 @@ cats are better.
 
 import discord
 import requests
+from modules.Command import Command
 from master import handler
+
+
+name = "dog"
+group = "fun"
 description = "grabs a random dog from https://random.dog"
 
 
-@handler.command("dog", description)
+@handler.command(Command(name, group, description))
 async def dog(bot, msg, args):
     request = requests.get("https://random.dog/woof")
     if not request.status_code == 200:
@@ -19,11 +24,11 @@ async def dog(bot, msg, args):
     embed = None
     if ".mp4" in request.text:
         embed = discord.Embed(video=request.text, type="rich")
-        embed.set_footer(text="retrieved from https://random.dog", icon_url="https://i.imgur.com/riA2zNy.jpg")
+        embed.set_footer(text="retrieved by https://random.dog", icon_url="https://i.imgur.com/riA2zNy.jpg")
         embed.set_image(url="https://random.dog/" + request.text)
         return
     else:
         embed = discord.Embed(type="rich")
-        embed.set_footer(text="retrieved from https://random.dog", icon_url="https://i.imgur.com/riA2zNy.jpg")
+        embed.set_footer(text="retrieved by https://random.dog", icon_url="https://i.imgur.com/riA2zNy.jpg")
         embed.set_image(url="https://random.dog/" + request.text)
     await bot.send_message(msg.channel, embed=embed)

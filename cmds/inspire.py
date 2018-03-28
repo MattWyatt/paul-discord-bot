@@ -5,11 +5,16 @@ grabs a random inspirational image from the inspirobot website.
 
 import discord
 import requests
+from modules.Command import Command
 from master import handler
+
+
+name = "inspire"
+group = "fun"
 description = "gets a random inspirational image from http://inspirobot.me"
 
 
-@handler.command("inspire", description)
+@handler.command(Command(name, group, description))
 async def inspire(bot, msg, args):
     request = requests.get("http://inspirobot.me/api?generate=true")
     if not request.status_code == 200:
