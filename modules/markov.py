@@ -7,6 +7,9 @@ import sqlite3
 from random import randint
 
 
+print("loaded module [markov]")
+
+
 def init():
     connection = sqlite3.connect("markov.db")
     c = connection.cursor()

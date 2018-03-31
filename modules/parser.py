@@ -6,6 +6,8 @@ this module is responsible for parsing out the various sections of messages.
 from master import cfg
 
 
+print("loaded module [parser]")
+
 def parse_command(content):
     string = content[len(cfg["prefix"]):]
     string = string.split(" ")

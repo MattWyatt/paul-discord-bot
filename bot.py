@@ -10,6 +10,8 @@ from master import cfg
 from master import client
 from master import handler
 
+from modules import fools
+
 # initially import commands
 loader.load()
 
@@ -33,6 +35,14 @@ async def on_message(message):
     elif message.content.startswith(cfg["markov_prefix"]+" "):
         response = await markov.construct_response(parser.parse_markov(message.content))
         await client.send_message(message.channel, response)
+
+    # april fools implementations
+    elif message.content.startswith("@supereveryone"):
+        await fools.super_everyone(client, message.channel)
+    elif message.content.startswith("@someone"):
+        await fools.someone(client, message.channel)
+    elif message.content == "owo":
+        await fools.cry_of_despair(client, message.author)
 
 
 client.run(cfg["token"])

@@ -2,9 +2,11 @@
 controls the loading of all files in the cmds directory
 """
 
-
 import os
 import importlib
+
+
+print("loaded module [loader]")
 
 
 def load():
